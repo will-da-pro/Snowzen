@@ -1,0 +1,11 @@
+name: SnowzenResources
+version: 1.0
+author: snowzen
+main: me.snowzen.snowzenresources.Main
+api-version: 1.17.1
+load: STARTUP
+
+commands:
+  hello:
+    aliases: [hi]
+    description: [this command says hello!]
