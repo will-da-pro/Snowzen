@@ -28,7 +28,7 @@ public class SnowGive extends GetCustomItem implements CommandExecutor{
 		Player p = (Player) sender;
 		
 		if (p.hasPermission("snowzen.snowgive")) {
-			ItemStack item = GetCustomItem.getItemFromConfig(label);
+			ItemStack item = GetCustomItem.getItemFromConfig(args[1]);
 			String playerName = args[0];
 			Player target = sender.getServer().getPlayerExact(playerName);
 			if (target == null) { //check whether the player is online

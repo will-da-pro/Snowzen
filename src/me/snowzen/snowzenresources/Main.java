@@ -11,6 +11,7 @@ import com.sun.istack.internal.NotNull;
 
 import me.snowzen.snowzenresources.Configs.Config;
 import me.snowzen.snowzenresources.commands.HelloCommand;
+import me.snowzen.snowzenresources.commands.SnowGive;
 import me.snowzen.snowzenresources.customWorldGen.TestWorldGen;
 //import me.snowzen.snowzenresources.commands.snowgive;
 import me.snowzen.snowzenresources.customWorldGen.Biomes.SimpleBiomeProvider;
@@ -26,6 +27,7 @@ public class Main extends JavaPlugin{
 		Bukkit.getPluginManager().registerEvents(new JoinEvent(), this);
 		Bukkit.getPluginManager().registerEvents(new Skills(), this);
 		new HelloCommand(this);
+		new SnowGive(this);
 		Config.startup();
 	}
 	
