@@ -10,7 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import me.snowzen.snowzenresources.Configs.Config;
 
 public class GetCustomItem extends Config {
-	public ItemStack getItemFromConfig(String itemName) {
+	public static ItemStack getItemFromConfig(String itemName) {
 		Material mat = Material.getMaterial(plugin.getConfig().getString("items." + itemName + ".type"));
 		String name = plugin.getConfig().getString("items." + itemName + ".name");
 		@SuppressWarnings("unchecked")
