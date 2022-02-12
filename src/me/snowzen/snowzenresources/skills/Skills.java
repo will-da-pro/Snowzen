@@ -16,26 +16,6 @@ public class Skills implements Listener {
 			return;
 		}
 		Material block = br.getBlock().getType();
-		if (block != Material.STONE & 
-			 block != Material.COAL_ORE &
-			 block != Material.DEEPSLATE_COAL_ORE &
-			 block != Material.DEEPSLATE_IRON_ORE &
-			 block != Material.IRON_ORE & 
-			 block != Material.REDSTONE_ORE & 
-			 block != Material.DEEPSLATE_REDSTONE_ORE &
-			 block != Material.GOLD_ORE & 
-			 block != Material.DEEPSLATE &
-			 block != Material.DEEPSLATE_GOLD_ORE &
-			 block != Material.DEEPSLATE_DIAMOND_ORE &
-			 block != Material.DIAMOND_ORE & 
-			 block != Material.EMERALD_ORE & 
-			 block != Material.DEEPSLATE_EMERALD_ORE &
-			 block != Material.DIORITE & 
-			 block != Material.GRANITE &
-			 block != Material.ANDESITE ) {
-			br.getPlayer().sendMessage("Wrong Block");
-		 return;
-		}
 		int stone = 1, deepslate = 5, diorite = 2, granite = 2, andesite = 2, coal = 5, iron = 15, gold = 30, redstone = 20, diamond = 50, emerald = 70;
 		Player player = br.getPlayer();
 		player.sendMessage("players." + player.getName() + ".skills.mining.xp");
@@ -73,6 +53,10 @@ public class Skills implements Listener {
 		}
 		else if (block == Material.EMERALD_ORE || block == Material.DEEPSLATE_EMERALD_ORE) {
 			Main.plugin.getConfig().set("players." + player.getName() + ".skills.mining.xp", xp + emerald);
+		}
+		else {
+			br.getPlayer().sendMessage("Wrong Block");
+			return;
 		}
 		player.sendMessage("Mined 1 " + block.name());
 		player.sendMessage(Integer.toString(xp));
