@@ -24,6 +24,7 @@ public class Skills implements Listener {
 			 block != Material.REDSTONE_ORE & 
 			 block != Material.DEEPSLATE_REDSTONE_ORE &
 			 block != Material.GOLD_ORE & 
+			 block != Material.DEEPSLATE &
 			 block != Material.DEEPSLATE_GOLD_ORE &
 			 block != Material.DEEPSLATE_DIAMOND_ORE &
 			 block != Material.DIAMOND_ORE & 
