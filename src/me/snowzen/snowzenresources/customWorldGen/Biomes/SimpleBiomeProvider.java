@@ -1,8 +1,6 @@
 package me.snowzen.snowzenresources.customWorldGen.Biomes;
 
 import com.google.common.collect.Lists;
-import com.sun.istack.internal.NotNull;
-
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.WorldInfo;
@@ -11,25 +9,42 @@ import org.bukkit.util.noise.SimplexOctaveGenerator;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nonnull;
+
 public class SimpleBiomeProvider extends BiomeProvider {
 
-    @NotNull
+    @Nonnull
     @Override
-    public Biome getBiome(@NotNull WorldInfo worldInfo, int x, int y, int z) {
+    public Biome getBiome(@Nonnull WorldInfo worldInfo, int x, int y, int z) {
         SimplexOctaveGenerator generator = new SimplexOctaveGenerator(new Random(worldInfo.getSeed()), 6);
-        generator.setScale(0.01);
+        generator.setScale(0.003);
 
-
-        if (generator.noise(x, z, 1, 1, true) < 0) {
+        if (generator.noise(x, z, 1, 1, true) < -0.4) {
+        	return Biome.WOODED_BADLANDS_PLATEAU;
+        }
+        else if (generator.noise(x, z, 1, 1, true) < -0.2) {
+        	return Biome.ERODED_BADLANDS;
+        }
+        else if (generator.noise(x, z, 1, 1, true) < 0) {
             return Biome.BADLANDS;
-        } else {
-            return Biome.DESERT;
+        }
+        else if (generator.noise(x, z, 1, 1, true) < 0.1){
+        	return Biome.DESERT;
+        }
+        else if (generator.noise(x, z, 1, 1, true) < 0.3){
+        	return Biome.DESERT_HILLS;
+        }
+        else if (generator.noise(x, z, 1, 1, true) < 0.7) {
+        	return Biome.BASALT_DELTAS;
+        }
+        else {
+            return Biome.MODIFIED_GRAVELLY_MOUNTAINS;
         }
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public List<Biome> getBiomes(@NotNull WorldInfo worldInfo) {
-        return Lists.newArrayList(Biome.BADLANDS, Biome.DESERT);
+    public List<Biome> getBiomes(@Nonnull WorldInfo worldInfo) {
+        return Lists.newArrayList(Biome.BADLANDS, Biome.WOODED_BADLANDS_PLATEAU, Biome.ERODED_BADLANDS, Biome.DESERT, Biome.BASALT_DELTAS, Biome.MODIFIED_GRAVELLY_MOUNTAINS);
     }
 }

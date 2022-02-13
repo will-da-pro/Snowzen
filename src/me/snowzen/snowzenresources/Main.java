@@ -1,13 +1,12 @@
 package me.snowzen.snowzenresources;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.bukkit.Bukkit;
 import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import com.sun.istack.internal.NotNull;
 
 import me.snowzen.snowzenresources.Configs.Config;
 import me.snowzen.snowzenresources.commands.HelloCommand;
@@ -38,7 +37,7 @@ public class Main extends JavaPlugin{
 	
 	@Nullable
     @Override
-    public BiomeProvider getDefaultBiomeProvider(@NotNull String worldName, @Nullable String id) {
+    public BiomeProvider getDefaultBiomeProvider(@Nonnull String worldName, @Nullable String id) {
         return new SimpleBiomeProvider();
     }
 	@Override
