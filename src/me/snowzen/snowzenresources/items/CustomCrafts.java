@@ -6,12 +6,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
 public class CustomCrafts extends GetCustomItem {
-	public void hardDiamondSword () {
+	public static ShapedRecipe hardDiamondSword() {
 		ItemStack hds = getItemFromConfig("hardened-diamond-sword");
 		ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(plugin, "recipe-name"), hds);
 		recipe.shape("ada", "ada", "asa");
 		recipe.setIngredient('a', Material.AIR);
 		recipe.setIngredient('d', Material.DIAMOND_BLOCK);
 		recipe.setIngredient('s', Material.STICK);
+		return recipe;
 	}
 }

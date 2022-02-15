@@ -14,6 +14,7 @@ import me.snowzen.snowzenresources.commands.SnowGive;
 import me.snowzen.snowzenresources.customWorldGen.TestWorldGen;
 //import me.snowzen.snowzenresources.commands.snowgive;
 import me.snowzen.snowzenresources.customWorldGen.Biomes.SimpleBiomeProvider;
+import me.snowzen.snowzenresources.items.CustomCrafts;
 import me.snowzen.snowzenresources.skills.Skills;
 
 public class Main extends JavaPlugin{
@@ -28,6 +29,7 @@ public class Main extends JavaPlugin{
 		new HelloCommand(this);
 		new SnowGive(this);
 		Config.startup();
+		getServer().addRecipe(CustomCrafts.hardDiamondSword());
 	}
 	
 	@Override
