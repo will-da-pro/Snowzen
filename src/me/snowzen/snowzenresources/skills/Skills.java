@@ -12,9 +12,9 @@ public class Skills implements Listener {
 		if (br.isCancelled()) {
 			return;
 		}
-		if (br.isAsynchronous()) {
-			
-		}
+		if (br.getExpToDrop() == 0) {
+      return;
+    }
 		Material block = br.getBlock().getType();
 		int stone = 1, deepslate = 5, diorite = 2, granite = 2, andesite = 2, coal = 5, iron = 15, gold = 30, redstone = 20, diamond = 50, emerald = 70;
 		Player player = br.getPlayer();

@@ -16,10 +16,10 @@ public class Events implements Listener {
 	public void onBreak(BlockBreakEvent br) {
 		Skills.checkMining(br);
 	}
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event)
-    {
-    	Player p = event.getPlayer();
-    	Config.initPlayerConfig(p);
-    }
+  @EventHandler
+  public void onPlayerJoin(PlayerJoinEvent event)
+  {
+    Player p = event.getPlayer();
+  	Config.initPlayerConfig(p);
+  }
 }
