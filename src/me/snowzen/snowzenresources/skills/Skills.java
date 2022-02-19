@@ -1,9 +1,12 @@
 package me.snowzen.snowzenresources.skills;
 
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.enchantment.EnchantItemEvent;
+import org.bukkit.event.inventory.BrewEvent;
 
 import me.snowzen.snowzenresources.Main;
 
@@ -12,9 +15,12 @@ public class Skills implements Listener {
 		if (br.isCancelled()) {
 			return;
 		}
-		if (br.getExpToDrop() == 0) {
-      return;
-    }
+		if (br.getPlayer().getInventory().getItemInMainHand().containsEnchantment(Enchantment.SILK_TOUCH)) {
+			return;
+		}
+		if (!br.isDropItems()) {
+			return;
+		}
 		Material block = br.getBlock().getType();
 		int stone = 1, deepslate = 5, diorite = 2, granite = 2, andesite = 2, coal = 5, iron = 15, gold = 30, redstone = 20, diamond = 50, emerald = 70;
 		Player player = br.getPlayer();
@@ -57,6 +63,7 @@ public class Skills implements Listener {
 		else {
 			return;
 		}
+		player.sendMessage(xp.toString());
 		Main.plugin.saveConfig();
 	}
 	public static void checkForaging(BlockBreakEvent br) {
@@ -67,7 +74,7 @@ public class Skills implements Listener {
 		int oak = 1, birch = 2, acacia = 2, spruce = 3, jungle = 4, dark_oak = 5;
 		
 		Player player = br.getPlayer();
-		Integer xp = Main.plugin.getConfig().getInt("players." + player.getName() + ".skills.mining.xp");
+		Integer xp = Main.plugin.getConfig().getInt("players." + player.getName() + ".skills.foraging.xp");
 		String path = "players." + player.getName() + ".skills.foraging.xp";
 		
 		if (block == Material.OAK_LOG) {
@@ -91,6 +98,24 @@ public class Skills implements Listener {
 		else {
 			return;
 		}
+		player.sendMessage(xp.toString());
 		Main.plugin.saveConfig();
+	}
+	public static void checkEnchant(EnchantItemEvent br) {
+		if (br.isCancelled()) {
+			return;
+		}
+
+		Player player = br.getEnchanter();
+		Integer xpToGive = (br.getExpLevelCost() * 5) * br.getEnchantsToAdd().size();
+		Integer xp = Main.plugin.getConfig().getInt("players." + player.getName() + ".skills.enchanting.xp");
+		String path = "players." + player.getName() + ".skills.enchanting.xp";
+		
+		Main.plugin.getConfig().set(path, xp + xpToGive);
+	}
+	public static void checkBrew(BrewEvent br) {
+		if (br.isCancelled()) {
+			return;
+		}
 	}
 }

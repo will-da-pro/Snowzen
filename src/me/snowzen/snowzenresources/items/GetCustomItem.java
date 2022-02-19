@@ -28,20 +28,13 @@ public class GetCustomItem extends Config {
 		meta.setLore(lore);
 		meta.setDisplayName(name);
 		meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
-		
-		net.minecraft.world.item.ItemStack nmsStack = CraftItemStack.asNMSCopy(is);
-		NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
-		NBTTagList modifiers = new NBTTagList();
-		NBTTagCompound damage = new NBTTagCompound();
-		damage.set("AttributeName", NBTTagString.a("generic.attackDamage"));
-		damage.set("Name", NBTTagString.a("generic.attackDamage"));
-		damage.set("Amount", NBTTagInt.a(dmg));
-		damage.set("Slot", NBTTagString.a("mainhand"));
-		modifiers.add(damage);
-		compound.set("AttributeModifiers", modifiers);
-		is = CraftItemStack.asBukkitCopy(nmsStack);
-		
 		is.setItemMeta(meta);
+		
+		NBTItem nbti = new NBTItem(is);
+		NBTEntity nbtent = new NBTEntity(zombie); //Only for vanilla tags!
+		NBTTileEntity tent = new NBTTileEntity(block.getState()); //Only for vanilla tags!
+		NBTFile file = new NBTFile(new File(getDataFolder(), "test.nbt"));
+		NBTContainer container =  new NBTContainer(json); //Parse in json
 		
 		return is;
 	}
