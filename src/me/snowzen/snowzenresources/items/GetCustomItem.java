@@ -28,12 +28,13 @@ public class GetCustomItem extends Config {
 		is.setItemMeta(meta);
 		
 		NBTItem nbti = new NBTItem(is);
-		nbti.setString("customItem", itemName);
-		is = NBTItem.convertNBTtoItem(nbti);
+		nbti.setByte("Damage", dmg.byteValue());
 		
 		NBTCompound custom = nbti.addCompound("custom");
 		custom.setString("id", itemName);
 		custom.setInteger("damage", dmg);
+		
+		
 		
 		is = nbti.getItem();
 		return is;
