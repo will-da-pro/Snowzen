@@ -3,16 +3,13 @@ package me.snowzen.snowzenresources.items;
 import java.util.List;
 
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_17_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import de.tr7zw.nbtapi.NBTCompound;
+import de.tr7zw.nbtapi.NBTItem;
 import me.snowzen.snowzenresources.Configs.Config;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagInt;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.nbt.NBTTagString;
 
 public class GetCustomItem extends Config {
 	public static ItemStack getItemFromConfig(String itemName) {
@@ -31,11 +28,14 @@ public class GetCustomItem extends Config {
 		is.setItemMeta(meta);
 		
 		NBTItem nbti = new NBTItem(is);
-		NBTEntity nbtent = new NBTEntity(zombie); //Only for vanilla tags!
-		NBTTileEntity tent = new NBTTileEntity(block.getState()); //Only for vanilla tags!
-		NBTFile file = new NBTFile(new File(getDataFolder(), "test.nbt"));
-		NBTContainer container =  new NBTContainer(json); //Parse in json
+		nbti.setString("customItem", itemName);
+		is = NBTItem.convertNBTtoItem(nbti);
 		
+		NBTCompound custom = nbti.addCompound("custom");
+		custom.setString("id", itemName);
+		custom.setInteger("damage", dmg);
+		
+		is = nbti.getItem();
 		return is;
 	}
 }
