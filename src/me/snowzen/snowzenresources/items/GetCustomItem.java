@@ -18,6 +18,7 @@ public class GetCustomItem extends Config {
 		@SuppressWarnings("unchecked")
 		List<String> lore = (List<String>) plugin.getConfig().getList("items." + itemName + ".lore");
 		Integer dmg = plugin.getConfig().getInt("items." + itemName + ".damage");
+		String ability = plugin.getConfig().getString("items." + itemName + ".ability");
 		
 		ItemStack is = new ItemStack(mat);
 		ItemMeta meta = is.getItemMeta();
@@ -28,13 +29,11 @@ public class GetCustomItem extends Config {
 		is.setItemMeta(meta);
 		
 		NBTItem nbti = new NBTItem(is);
-		nbti.setByte("Damage", dmg.byteValue());
 		
 		NBTCompound custom = nbti.addCompound("custom");
 		custom.setString("id", itemName);
 		custom.setInteger("damage", dmg);
-		
-		
+		custom.setString("ability", ability);
 		
 		is = nbti.getItem();
 		return is;
