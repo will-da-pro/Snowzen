@@ -8,7 +8,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import de.tr7zw.nbtapi.NBTCompound;
+import de.tr7zw.nbtapi.NBTCompoundList;
 import de.tr7zw.nbtapi.NBTItem;
+import de.tr7zw.nbtapi.NBTListCompound;
 import me.snowzen.snowzenresources.Configs.Config;
 
 public class GetCustomItem extends Config {
@@ -35,6 +37,18 @@ public class GetCustomItem extends Config {
 		custom.setInteger("damage", dmg);
 		custom.setString("ability", ability);
 		
+		NBTCompoundList attribute = nbti.getCompoundList("AttributeModifiers");
+        NBTListCompound mod1 = attribute.addCompound();
+        mod1.setByte("Amount", dmg.byteValue());
+        mod1.setString("AttributeName", "generic.attack_damage");
+        mod1.setString("Name", "generic.attack_damage");
+        mod1.setString("Slot", "mainhand");
+        mod1.setInteger("Operation", 0);
+        mod1.setInteger("UUIDLeast", 59664);
+        mod1.setInteger("UUIDMost", 31453);
+
+        nbti.setBoolean("Unbreakable", true);
+        
 		is = nbti.getItem();
 		return is;
 	}
