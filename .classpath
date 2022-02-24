@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="C:/Users/willi/Downloads/worldedit-mod-7.2.7.jar"/>
 	<classpathentry kind="lib" path="C:/Users/willi/Downloads/Item-NBT-API-2.8.0.zip"/>
 	<classpathentry kind="lib" path="C:/Users/willi/OneDrive/Desktop/Projects/item-nbt-api-plugin-2.8.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/willi/Downloads/MythicMobs-4.14.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
