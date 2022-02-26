@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import me.snowzen.snowzenresources.Configs.Config;
 import me.snowzen.snowzenresources.Events.Events;
+import me.snowzen.snowzenresources.Mobs.CustomMob;
 import me.snowzen.snowzenresources.commands.HelloCommand;
 import me.snowzen.snowzenresources.commands.SnowGive;
 import me.snowzen.snowzenresources.customWorldGen.TestWorldGen;
@@ -29,6 +30,7 @@ public class Main extends JavaPlugin{
 		Bukkit.getPluginManager().registerEvents(new Events(), this);
 		new HelloCommand(this);
 		new SnowGive(this);
+		new CustomMob(this);
 		Config.startup();
 		getServer().addRecipe(CustomCrafts.hardDiamondSword());
 	}

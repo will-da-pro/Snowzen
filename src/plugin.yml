@@ -12,3 +12,6 @@ commands:
   snowgive:
     aliases: [snowg]
     description: [gives you a custom item]
+  snowspawn:
+    aliases: [snows]
+    description: [spawns a snowzen mob]
