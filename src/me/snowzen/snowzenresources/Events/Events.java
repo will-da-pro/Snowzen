@@ -12,8 +12,12 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.inventory.BrewEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
 
+import de.tr7zw.nbtapi.NBTCompound;
+import de.tr7zw.nbtapi.NBTItem;
 import me.snowzen.snowzenresources.Configs.Config;
+import me.snowzen.snowzenresources.items.abilitites.AxeAoe;
 import me.snowzen.snowzenresources.skills.Skills;
 
 public class Events implements Listener {
@@ -47,6 +51,17 @@ public class Events implements Listener {
 	}
 	@EventHandler(priority=EventPriority.HIGH)
 	public void onPlayerUse(PlayerInteractEvent event){
-	    
+		Player player = event.getPlayer();
+	    ItemStack item = event.getItem();
+	    NBTItem nbt = new NBTItem(item);
+	    NBTCompound comp = nbt.getCompound("custom");
+	    //if (comp == null) {return;}
+	    String ability = comp.getString("ability");
+	    Integer damage = comp.getInteger("damage");
+	    player.sendMessage(ability + " , " + damage);
+	    if (ability == "axeaoe") {
+	    	AxeAoe.ability(player, damage);
+	    }
+	    else {return;}
 	}
 }
