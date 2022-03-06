@@ -55,13 +55,16 @@ public class Events implements Listener {
 	    ItemStack item = event.getItem();
 	    NBTItem nbt = new NBTItem(item);
 	    NBTCompound comp = nbt.getCompound("custom");
-	    //if (comp == null) {return;}
+	    if (comp == null) {return;}
 	    String ability = comp.getString("ability");
 	    Integer damage = comp.getInteger("damage");
-	    player.sendMessage(ability + " , " + damage);
+	    player.sendMessage(ability + ", " + damage);
 	    if (ability == "axeaoe") {
+	    	player.sendMessage("worked!");
 	    	AxeAoe.ability(player, damage);
 	    }
-	    else {return;}
+	    else {
+	    	player.sendMessage("wrong item");
+	    }
 	}
 }
