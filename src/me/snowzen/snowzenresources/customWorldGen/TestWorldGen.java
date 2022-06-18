@@ -5,14 +5,13 @@ import org.bukkit.World;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;
 import org.bukkit.util.noise.SimplexOctaveGenerator;
-
-import javax.annotation.Nonnull;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
 public class TestWorldGen extends ChunkGenerator {
 	@Override
-    public void generateNoise(@Nonnull WorldInfo worldInfo, @Nonnull Random random, int chunkX, int chunkZ, @Nonnull ChunkGenerator.ChunkData chunkData) {
+    public void generateNoise(@NotNull WorldInfo worldInfo, @NotNull Random random, int chunkX, int chunkZ, @NotNull ChunkGenerator.ChunkData chunkData) {
         SimplexOctaveGenerator generator = new SimplexOctaveGenerator(new Random(worldInfo.getSeed()), 6);
         generator.setScale(0.008);
 
@@ -43,7 +42,7 @@ public class TestWorldGen extends ChunkGenerator {
     }
 
     @Override
-    public void generateBedrock(@Nonnull WorldInfo worldInfo, @Nonnull Random random, int chunkX, int chunkZ, @Nonnull ChunkGenerator.ChunkData chunkData) {
+    public void generateBedrock(@NotNull WorldInfo worldInfo, @NotNull Random random, int chunkX, int chunkZ, @NotNull ChunkGenerator.ChunkData chunkData) {
         if (chunkData.getMinHeight() == worldInfo.getMinHeight()) {
             for (int x = 0; x < 16; x++) {
                 for (int z = 0; z < 16; z++) {

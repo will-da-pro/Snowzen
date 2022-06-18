@@ -1,8 +1,5 @@
 package me.snowzen.snowzenresources;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import org.bukkit.Bukkit;
 import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.ChunkGenerator;
@@ -40,9 +37,8 @@ public class Main extends JavaPlugin{
 		plugin = null;
 	}
 	
-	@Nullable
     @Override
-    public BiomeProvider getDefaultBiomeProvider(@Nonnull String worldName, @Nullable String id) {
+    public BiomeProvider getDefaultBiomeProvider(String worldName, String id) {
         return new SimpleBiomeProvider();
     }
 	@Override

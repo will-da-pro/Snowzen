@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/willi/Downloads/spigot-1.17.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/willi/Downloads/worldedit-mod-7.2.7.jar"/>
 	<classpathentry kind="lib" path="C:/Users/willi/Downloads/Item-NBT-API-2.8.0.zip"/>
 	<classpathentry kind="lib" path="C:/Users/willi/OneDrive/Desktop/Projects/item-nbt-api-plugin-2.8.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/willi/Downloads/MythicMobs-4.14.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/willi/Minecraft Modding/exports/spigot-1.18.2.jar"/>
+	<classpathentry kind="src" path="/Spigot-API"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
