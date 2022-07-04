@@ -1,4 +1,4 @@
-package me.snowzen.snowzenresources.Mobs;
+package me.snowzen.snowzenresources.entities;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

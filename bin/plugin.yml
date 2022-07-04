@@ -15,3 +15,6 @@ commands:
   snowspawn:
     aliases: [snows]
     description: [spawns a snowzen mob]
+  ip:
+    aliases: [getip]
+    description: [Gets the current IP of the server]

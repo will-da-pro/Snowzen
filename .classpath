@@ -10,7 +10,8 @@
 	<classpathentry kind="lib" path="C:/Users/willi/Downloads/Item-NBT-API-2.8.0.zip"/>
 	<classpathentry kind="lib" path="C:/Users/willi/OneDrive/Desktop/Projects/item-nbt-api-plugin-2.8.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/willi/Downloads/MythicMobs-4.14.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/willi/Minecraft Modding/exports/spigot-1.18.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/willi/Downloads/Multiverse-Core-4.3.1.jar"/>
 	<classpathentry kind="src" path="/Spigot-API"/>
+	<classpathentry kind="lib" path="C:/Users/willi/Downloads/Spigot/Spigot-API/target/spigot-api-1.18.2-R0.1-SNAPSHOT-shaded.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

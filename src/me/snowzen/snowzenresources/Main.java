@@ -7,12 +7,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import me.snowzen.snowzenresources.Configs.Config;
 import me.snowzen.snowzenresources.Events.Events;
-import me.snowzen.snowzenresources.Mobs.CustomMob;
+import me.snowzen.snowzenresources.commands.GetIP;
 import me.snowzen.snowzenresources.commands.HelloCommand;
 import me.snowzen.snowzenresources.commands.SnowGive;
 import me.snowzen.snowzenresources.customWorldGen.TestWorldGen;
 //import me.snowzen.snowzenresources.commands.snowgive;
 import me.snowzen.snowzenresources.customWorldGen.Biomes.SimpleBiomeProvider;
+import me.snowzen.snowzenresources.entities.CustomMob;
 import me.snowzen.snowzenresources.items.CustomCrafts;
 import me.snowzen.snowzenresources.skills.Skills;
 
@@ -28,6 +29,7 @@ public class Main extends JavaPlugin{
 		new HelloCommand(this);
 		new SnowGive(this);
 		new CustomMob(this);
+		new GetIP(this);
 		Config.startup();
 		getServer().addRecipe(CustomCrafts.hardDiamondSword());
 	}
