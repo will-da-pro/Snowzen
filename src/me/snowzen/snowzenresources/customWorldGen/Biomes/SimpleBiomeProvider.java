@@ -5,16 +5,16 @@ import org.bukkit.block.Biome;
 import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.WorldInfo;
 import org.bukkit.util.noise.SimplexOctaveGenerator;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nonnull;
+
 public class SimpleBiomeProvider extends BiomeProvider {
 
-    @NotNull
+    @Nonnull
     @Override
-    public Biome getBiome(@NotNull WorldInfo worldInfo, int x, int y, int z) {
+    public Biome getBiome(@Nonnull WorldInfo worldInfo, int x, int y, int z) {
         SimplexOctaveGenerator generator = new SimplexOctaveGenerator(new Random(worldInfo.getSeed()), 6);
         generator.setScale(0.003);
 
@@ -41,9 +41,9 @@ public class SimpleBiomeProvider extends BiomeProvider {
         }
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public List<Biome> getBiomes(@NotNull WorldInfo worldInfo) {
+    public List<Biome> getBiomes(@Nonnull WorldInfo worldInfo) {
         return Lists.newArrayList(Biome.BADLANDS, Biome.WOODED_BADLANDS, Biome.ERODED_BADLANDS, Biome.DESERT, Biome.BASALT_DELTAS, Biome.WINDSWEPT_GRAVELLY_HILLS);
     }
 }
