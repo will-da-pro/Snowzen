@@ -2,7 +2,7 @@ name: SnowzenResources
 version: 1.0
 author: snowzen
 main: me.snowzen.snowzenresources.Main
-api-version: 1.17
+api-version: 1.18
 load: STARTUP
 
 commands:

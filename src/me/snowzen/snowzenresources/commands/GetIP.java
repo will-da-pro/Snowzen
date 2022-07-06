@@ -15,7 +15,7 @@ public class GetIP implements CommandExecutor{
 	
 	public GetIP(Main plugin) {
 		this.plugin = plugin;
-		plugin.getCommand("hello").setExecutor(this);
+		plugin.getCommand("ip").setExecutor(this);
 	}
 	
 	@Override
