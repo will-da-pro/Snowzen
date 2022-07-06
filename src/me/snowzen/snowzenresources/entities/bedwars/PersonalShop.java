@@ -1,33 +1,41 @@
 package me.snowzen.snowzenresources.entities.bedwars;
 
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Villager;
-import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.metadata.MetadataValue;
-
+import org.bukkit.event.EventHandler;
 import me.snowzen.snowzenresources.Main;
+import net.citizensnpcs.api.CitizensAPI;
+import net.citizensnpcs.api.npc.NPC;
+import net.citizensnpcs.trait.SkinTrait;
 
 public class PersonalShop {
 	@SuppressWarnings("unused")
 	private Main plugin;
-	private World world;
 	private Location location;
-	public PersonalShop(Main plugin, World world, Location location) {
+	private String skin;
+	public PersonalShop(Main plugin, String skin, Location location) {
 		this.plugin = plugin;
-		this.world = world;
 		this.location = location;
+		this.skin = skin;
 	}    
-	public void spawnEntity() {
-		LivingEntity entity = (LivingEntity)world.spawnEntity(location, EntityType.VILLAGER);
-		Villager shop = (Villager)entity;
-		MetadataValue meta = new FixedMetadataValue(plugin, 1);
+	
+	public NPC getNPC() {
+		NPC npc = CitizensAPI.getNPCRegistry().createNPC(EntityType.PLAYER, "Item Shop"); 
 		
-		shop.setCustomName("§cItem Shop");
-		shop.setCustomNameVisible(true);
-		shop.setMetadata("shop", meta);
-		return;
+		SkinTrait NPCSkin = npc.getOrAddTrait(SkinTrait.class);
+		NPCSkin.setSkinName(this.skin);
+		
+		return npc;
+	}
+	
+	public void spawnNPC() {
+		this.getNPC().spawn(this.location);
+	}
+	
+	@EventHandler
+	public void click(net.citizensnpcs.api.event.NPCRightClickEvent event){
+		if (event.getNPC() == this.getNPC()) {
+			
+		}
 	}
 }
