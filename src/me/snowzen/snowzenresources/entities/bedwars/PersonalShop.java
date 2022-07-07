@@ -2,8 +2,12 @@ package me.snowzen.snowzenresources.entities.bedwars;
 
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.inventory.Inventory;
+
 import me.snowzen.snowzenresources.Main;
+import me.snowzen.snowzenresources.gui.bedwars.ItemShopGUI;
 import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
 import net.citizensnpcs.trait.SkinTrait;
@@ -35,7 +39,10 @@ public class PersonalShop {
 	@EventHandler
 	public void click(net.citizensnpcs.api.event.NPCRightClickEvent event){
 		if (event.getNPC() == this.getNPC()) {
+			Player plr = event.getClicker();
+			Inventory inv = ItemShopGUI.getGUI("green", (short) 1);
 			
+			plr.openInventory(inv);
 		}
 	}
 }

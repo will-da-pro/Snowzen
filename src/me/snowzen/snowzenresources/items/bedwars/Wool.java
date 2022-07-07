@@ -8,8 +8,11 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import de.tr7zw.nbtapi.NBTCompound;
+import de.tr7zw.nbtapi.NBTItem;
+
 public class Wool {
-	public static ItemStack getItem(Material woolType) {
+	public static ItemStack getItem(Material woolType, short price, String material) {
 		ItemStack item = new ItemStack(woolType, 16); 
 		ItemMeta meta = item.getItemMeta();
 		List<String> lore = new ArrayList<String>();
@@ -20,6 +23,16 @@ public class Wool {
 		meta.setLore(lore);
 		
 		item.setItemMeta(meta);
+		
+		NBTItem nbti = new NBTItem(item);
+		NBTCompound nbtComp = nbti.addCompound("shop");
+		
+		// 1: buyable item, 2: menu item
+		nbtComp.setShort("guitype", (short) 1);
+		nbtComp.setShort("price", price);
+		nbtComp.setString("material", material);
+		
+		item = nbti.getItem();
 		
 		return item;
 	}
