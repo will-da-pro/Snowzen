@@ -4,6 +4,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 
 import me.snowzen.snowzenresources.Main;
@@ -12,7 +13,7 @@ import net.citizensnpcs.api.CitizensAPI;
 import net.citizensnpcs.api.npc.NPC;
 import net.citizensnpcs.trait.SkinTrait;
 
-public class PersonalShop {
+public class PersonalShop implements Listener {
 	@SuppressWarnings("unused")
 	private Main plugin;
 	private Location location;

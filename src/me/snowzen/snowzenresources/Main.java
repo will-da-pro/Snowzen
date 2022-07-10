@@ -14,6 +14,7 @@ import me.snowzen.snowzenresources.customWorldGen.TestWorldGen;
 //import me.snowzen.snowzenresources.commands.snowgive;
 import me.snowzen.snowzenresources.customWorldGen.Biomes.SimpleBiomeProvider;
 import me.snowzen.snowzenresources.entities.CustomMob;
+import me.snowzen.snowzenresources.gui.bedwars.ItemShopGUI;
 import me.snowzen.snowzenresources.items.CustomCrafts;
 import me.snowzen.snowzenresources.skills.Skills;
 
@@ -26,6 +27,7 @@ public class Main extends JavaPlugin{
 		plugin = this;
 		Bukkit.getPluginManager().registerEvents(new Skills(), this);
 		Bukkit.getPluginManager().registerEvents(new Events(), this);
+		Bukkit.getPluginManager().registerEvents(new ItemShopGUI(), this);
 		new HelloCommand(this);
 		new SnowGive(this);
 		new CustomMob(this);
