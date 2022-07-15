@@ -1,46 +1,27 @@
 package me.snowzen.snowzenresources.pvp.bedwars;
 
-import java.io.File;
 import java.util.List;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.plugin.Plugin;
+
 import me.snowzen.snowzenresources.Configs.Config;
+import me.snowzen.snowzenresources.pvp.bedwars.generators.BaseGenerators;
+import me.snowzen.snowzenresources.pvp.bedwars.generators.DiamondGenerators;
 
 public class BedwarsWorld extends Config {
-	private String name;
 	private String gamemode;
+	private Plugin plugin;
 	
-	public BedwarsWorld(String gamemode, String name) {
+	public BedwarsWorld(String gamemode, String name, Plugin plugin) {
 		this.gamemode = gamemode;
-		this.name = name;
-	}
-	
-	@Deprecated
-	private File getRandomSchematic() {
-		@SuppressWarnings("unchecked")
-		List<String> schematics = (List<String>) plugin.getConfig().getList("worlds." + this.gamemode);
-		Random rand = new Random();
-		
-		String strPath = schematics.get(rand.nextInt(schematics.size()));
-		
-		File file = new File(plugin.getConfig().getString(strPath));
-		
-		return file;
+		this.plugin = plugin;
 	}
 	
 	public void createWorld() {
-		//File file = getRandomSchematic();
-		
-		//WorldCreator wc = new WorldCreator(this.name);
-
-		//wc.type(WorldType.FLAT);
-		//wc.generatorSettings("2;0;1;");
-
-		//World world = wc.createWorld();
-		//Vector loc = new Vector(0, 0, 0);
-		
 		@SuppressWarnings("unchecked")
 		List<String> worlds = (List<String>) plugin.getConfig().getConfigurationSection("worlds." + this.gamemode);
 		Random rand = new Random();
@@ -68,15 +49,16 @@ public class BedwarsWorld extends Config {
 				Bukkit.getLogger().warning("Error in createWorld");
 				break;
 		}
-		
-		ConfigurationSection world = plugin.getConfig().getConfigurationSection("worlds." + this.gamemode + worlds.get(rand.nextInt(worlds.size())));
-		short[][] baseGens = new short[length][2];
-		short[][] diamondGens = new short[4][2];
-		short[][] emeraldGens = new short[4][2];
+		String worldName = worlds.get(rand.nextInt(worlds.size()));
+		ConfigurationSection configWorld = plugin.getConfig().getConfigurationSection("worlds." + this.gamemode + worldName);
+		World world = Bukkit.getWorld(worldName);
+		double[][] baseGens = new double[length][3];
+		double[][] diamondGens = new double[4][3];
+		double[][] emeraldGens = new double[4][3];
 		
 		// Base generators
 		for (short i = 0; i < length; i++) {
-			List<Short> coords = world.getShortList("generators.base." + i);
+			List<Short> coords = configWorld.getShortList("generators.base." + i);
 			for (short n = 0; n < coords.size(); n++) {
 				baseGens[i][n] = coords.get(n);
 			}
@@ -84,7 +66,7 @@ public class BedwarsWorld extends Config {
 		
 		// Diamond generators
 		for (short i = 0; i < 4; i++) {
-			List<Short> coords = world.getShortList("generators.diamond." + i);
+			List<Short> coords = configWorld.getShortList("generators.diamond." + i);
 			for (short n = 0; n < coords.size(); n++) {
 				diamondGens[i][n] = coords.get(n);
 			}
@@ -92,11 +74,17 @@ public class BedwarsWorld extends Config {
 		
 		// Emerald generators
 		for (short i = 0; i < 4; i++) {
-			List<Short> coords = world.getShortList("generators.emerald." + i);
+			List<Short> coords = configWorld.getShortList("generators.emerald." + i);
 			for (short n = 0; n < coords.size(); n++) {
 				emeraldGens[i][n] = coords.get(n);
 			}
 		}
+		
+		// Generator objects
+		@SuppressWarnings("unused")
+		BaseGenerators baseGen = new BaseGenerators(baseGens, world);
+		@SuppressWarnings("unused")
+		DiamondGenerators diamondGen = new DiamondGenerators(diamondGens, world, plugin);
 	}
 	
 	public interface bedwarsGames {
