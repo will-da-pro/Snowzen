@@ -13,6 +13,7 @@ import org.bukkit.plugin.Plugin;
 import me.snowzen.snowzenresources.Configs.Config;
 import me.snowzen.snowzenresources.pvp.bedwars.generators.BaseGenerators;
 import me.snowzen.snowzenresources.pvp.bedwars.generators.DiamondGenerators;
+import me.snowzen.snowzenresources.pvp.bedwars.generators.EmeraldGenerators;
 
 public class BedwarsWorld extends Config {
 	private String gamemode;
@@ -96,6 +97,8 @@ public class BedwarsWorld extends Config {
 		BaseGenerators baseGen = new BaseGenerators(baseGens, world);
 		@SuppressWarnings("unused")
 		DiamondGenerators diamondGen = new DiamondGenerators(diamondGens, world, plugin);
+		@SuppressWarnings("unused")
+		EmeraldGenerators emeraldGen = new EmeraldGenerators(emeraldGens, world, plugin);
 	}
 	
 	public interface bedwarsGames {

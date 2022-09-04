@@ -19,3 +19,6 @@ commands:
   ip:
     aliases: [getip]
     description: [Gets the current IP of the server]
+  bedwars:
+    aliases: [bedw]
+    description: [Start a bedwars game]

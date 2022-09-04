@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import me.snowzen.snowzenresources.Configs.Config;
 import me.snowzen.snowzenresources.Events.Events;
+import me.snowzen.snowzenresources.commands.BedwarsCommand;
 import me.snowzen.snowzenresources.commands.GetIP;
 import me.snowzen.snowzenresources.commands.HelloCommand;
 import me.snowzen.snowzenresources.commands.SnowGive;
@@ -32,6 +33,7 @@ public class Main extends JavaPlugin{
 		new SnowGive(this);
 		new CustomMob(this);
 		new GetIP(this);
+		new BedwarsCommand(this);
 		Config.startup();
 		getServer().addRecipe(CustomCrafts.hardDiamondSword());
 	}
