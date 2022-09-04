@@ -51,9 +51,10 @@ public class BedwarsWorld extends Config {
 				break;
 			default:
 				length = 16;
-				Bukkit.getLogger().warning("Error in createWorld");
+				Bukkit.getLogger().warning("Invalid Bedwars Gamemode");
 				break;
 		}
+		
 		String worldName = worlds.get(rand.nextInt(worlds.size()));
 		ConfigurationSection configWorld = plugin.getConfig().getConfigurationSection("worlds." + this.gamemode + worldName);
 		world = Bukkit.getWorld(worldName);

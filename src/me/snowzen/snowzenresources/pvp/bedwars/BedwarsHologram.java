@@ -3,13 +3,13 @@ package me.snowzen.snowzenresources.pvp.bedwars;
 import java.util.concurrent.TimeUnit;
 
 import me.filoghost.holographicdisplays.api.hologram.Hologram;
-import me.snowzen.snowzenresources.pvp.bedwars.generators.DiamondGenerators;
+import me.snowzen.snowzenresources.pvp.bedwars.generators.Generator;
 
 public class BedwarsHologram extends Thread {
 	Hologram[] holos;
-	DiamondGenerators gens;
+	Generator gens;
 	
-	public BedwarsHologram(Hologram[] holograms, DiamondGenerators generators) {
+	public BedwarsHologram(Hologram[] holograms, Generator generators) {
 		this.holos = holograms;
 		this.gens = generators;
 	}

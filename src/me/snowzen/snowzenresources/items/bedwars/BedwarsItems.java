@@ -18,12 +18,11 @@ public class BedwarsItems {
 	}
 	
 	public HashMap<String, ItemStack> createItems(String team) {
-		registerItem("Wool", GUIType.BUYABLE, Material.valueOf(team + "_WOOL"), 4, Material.IRON_INGOT.toString(), 16, team);
+		registerItem("Wool", GUIType.BUYABLE, Material.valueOf(team + "_WOOL"), (short)4, Material.IRON_INGOT.toString(), (short)16, team);
 		
 		return items;
 	}
 	
-	@SuppressWarnings("unused")
 	private static void registerItem(String name, GUIType type, Material mat, Short price, String buyMat, Short amount, String team, String... lore) {
 		ItemStack item = new ItemStack(mat, amount); 
 		ItemMeta meta = item.getItemMeta();
